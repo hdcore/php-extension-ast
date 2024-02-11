@@ -1,0 +1,19 @@
+name: Build php-ast extension
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build the extension
+        uses: php/php-windows-builder/extension-matrix@v1
+        with:
+          extension-url: https://github.com/nikic/php-ast
+          extension-ref: "1.1.1"
+          php-version-list: "8.2, 8.3"
+          ts-list: "ts"
+          arch-list: "x64"
